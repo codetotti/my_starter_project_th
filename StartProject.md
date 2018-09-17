@@ -1,7 +1,31 @@
-# เริ่มโปรเจค
+# เริ่มโปรเจคท์ javascript
 
-ติดตั้ง [node](https://nodejs.org/en/download/)
-ทางเลือกจะลง [yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable) เพิ่มด้วยก็ได้
+#### อัพเดทเมื่อ 17/9/2018
+
+รายการ
+* [ศึกษา ES6](#ศึกษา-ES6)
+* [ติดตั้ง Node และ Yarn](#ติดตั้ง-node-และ-yarn)
+* [ติดตั้ง Webpack](#ติดตั้ง-webpack)
+* [ติดตั้ง Babel](#ติดตั้ง-babel)
+### `ศึกษา ES6`
+
+ต้องทวนบ่อย ๆ เพราะมันจะลืมง่ายมากว่าเรียกว่าอะไร รวมไปถึง ES7/ES8/TC39
+* [Babel ES6 Learning](https://babeljs.io/docs/en/next/learn)
+* [Javascript Fundamental](https://developer.mozilla.org/bm/docs/Web/JavaScript)
+* [ES6 Features](https://github.com/lukehoban/es6features#readme)
+* [ECMA2015 Specification](http://www.ecma-international.org/ecma-262/6.0/index.html)
+
+### `ติดตั้ง Node และ Yarn`
+ติดตั้ง [node](https://nodejs.org/en/download/) หรือทางเลือกจะลง [yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable) เพิ่มด้วยก็ได้
+
+จัดการโปรเจคท์ด้วย node
+นอกจากนั้นยังมีคำสั่งที่เกี่ยวกับ node เช่น
+
+> `npm install`
+
+จะทำการ download libs ไฟล์ที่ยังไม่มีใน package.json เข้ามายังโปรเจคท์
+
+> `npm update`
 
 ตัวอย่าง libraries ที่เคยใช้เพิ่มเติม หลัก ๆ จะมี
 
@@ -11,7 +35,7 @@
 * กลุ่ม webpack ( webpack, webpack-cli ) อยากให้ webpack start server ก็ลง webpack-serve ถ้าอยากวิเคราะห์ขนาดไฟล์ที่ได้หลังจาก pack แล้วก็ webpack-bundle-analyzer
 * กลุ่มอื่น ๆ คือ กลุ่มที่ใช้เพิ่มเติมในงานเช่น date-fns ที่หากต้องการแค่แปลงเวลานิดหน่อยไฟล์ขนาดเล็กใช้ได้ใกล้เคียง moment.js ลงตัวนี้ได้
 
-เลขเวอร์ชันจะเก่าขึ้นการมีเครื่องหมาย `^` นำหน้าเลขเวอร์ชันหมายถึงหากรันคำสั่งที่อัพเดท
+การมีเครื่องหมาย `^` นำหน้าเลขเวอร์ชันหมายถึงหากรันคำสั่งที่อัพเดท
 โปรเจคท์ npm ก็จะ download ตัวที่ใหม่กว่ามาลงให้ทันที หากไม่ต้องการก็ให้เอา `^` ออก
 
 ```
@@ -36,27 +60,29 @@
     "webpack-serve": "^0.3.1"
 ```
 
-นอกจากนั้นยังมีคำสั่งที่เกี่ยวกับ node เช่น
-
-> `node install`
-
-> `node update`
-
-ติดตั้ง webpack
+### `ติดตั้ง webpack`
 
 > `npm install webpack webpack-cli --save-dev`
 
-ถ้าลง webpack แล้วจะต้องไฟล์ชื่อว่า webpack.config.js เพื่อเซ็ตค่า config ตามเอกสารของ webpack แต่โดยพื้นฐานก็ใช้ประมาณนี้
+ถ้าลง webpack แล้วจะต้องสร้างไฟล์ชื่อว่า webpack.config.js เพื่อเซ็ตค่า config ตามเอกสารของ webpack แต่โดยพื้นฐานก็ใช้ประมาณนี้
 
-```json
+```
 module.exports = {
     entry: {},
     output: {},
     mode: production/development,
-
+    module: {},
+    optimization: {},
+    plugins: {}
 }
 ```
+ใช้ [webpack plugins](https://webpack.js.org/plugins/) เพิ่มเติมเช่น path, HtmlWebpackPlugin, ZipPlugin, UglifyJsPlugin, webpack.DefinePlugin
 
+### `ติดตั้ง Babel`
+ฺBabel6 -> Babel7
+* อัพเกรดผ่าน npx babel-upgrade
+* ใช้ babel-preset-env อย่างเดียว ไม่มีรุ่นปีเหมือน v.6
+* พวก stage-0 / 1 / 2 โดนยกเลิกเช่นเดียวกันให้ stage ตามนี้ [Ref.](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0)
 
 ## เลือก Framework
 ### `No Framework`
@@ -66,7 +92,17 @@ module.exports = {
 
 หากต้องทำงานร่วมกับ browser เก่าหรือ device เก่า จะต้องลง babel เพิ่ม
 
->
+> `npm install babel-core babel-cli babel-preset-env babel-polyfill --save-dev`
+
+หลังจากลง babel แล้วจะต้อง config babel ให้กับโปรเจคท์ เพื่อให้โปรเจคท์รู้ว่าใช้ babel preset ตัวใด (เช่น env, react) โดยระบุได้ 2 แบบ คือ
+
+1. สร้างไฟล์ชื่อ .babelrc แล้วระบุดังตัวอย่าง
+
+```
+{
+  "presets": ["env"]
+}
+```
 
 ### `AngularJS`
 
