@@ -2,18 +2,20 @@
 
 #### อัพเดทเมื่อ 17/9/2018
 
-รายการ
+### `รายการ`
 * [ศึกษา ES6](#ศึกษา-ES6)
 * [ติดตั้ง Node และ Yarn](#ติดตั้ง-node-และ-yarn)
 * [ติดตั้ง Webpack](#ติดตั้ง-webpack)
 * [ติดตั้ง Babel](#ติดตั้ง-babel)
-### `ศึกษา ES6`
 
+### `ศึกษา ES6`
 ต้องทวนบ่อย ๆ เพราะมันจะลืมง่ายมากว่าเรียกว่าอะไร รวมไปถึง ES7/ES8/TC39
 * [Babel ES6 Learning](https://babeljs.io/docs/en/next/learn)
 * [Javascript Fundamental](https://developer.mozilla.org/bm/docs/Web/JavaScript)
 * [ES6 Features](https://github.com/lukehoban/es6features#readme)
 * [ECMA2015 Specification](http://www.ecma-international.org/ecma-262/6.0/index.html)
+* [Web technologies](https://developer.mozilla.org/en-US/docs/Web)
+
 
 ### `ติดตั้ง Node และ Yarn`
 ติดตั้ง [node](https://nodejs.org/en/download/) หรือทางเลือกจะลง [yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable) เพิ่มด้วยก็ได้
@@ -79,16 +81,6 @@ module.exports = {
 ใช้ [webpack plugins](https://webpack.js.org/plugins/) เพิ่มเติมเช่น path, HtmlWebpackPlugin, ZipPlugin, UglifyJsPlugin, webpack.DefinePlugin
 
 ### `ติดตั้ง Babel`
-ฺBabel6 -> Babel7
-* อัพเกรดผ่าน npx babel-upgrade
-* ใช้ babel-preset-env อย่างเดียว ไม่มีรุ่นปีเหมือน v.6
-* พวก stage-0 / 1 / 2 โดนยกเลิกเช่นเดียวกันให้ stage ตามนี้ [Ref.](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0)
-
-## เลือก Framework
-### `No Framework`
-
-เริ่มโปรเจคท์
-> `npm init`
 
 หากต้องทำงานร่วมกับ browser เก่าหรือ device เก่า จะต้องลง babel เพิ่ม
 
@@ -96,13 +88,24 @@ module.exports = {
 
 หลังจากลง babel แล้วจะต้อง config babel ให้กับโปรเจคท์ เพื่อให้โปรเจคท์รู้ว่าใช้ babel preset ตัวใด (เช่น env, react) โดยระบุได้ 2 แบบ คือ
 
-1. สร้างไฟล์ชื่อ .babelrc แล้วระบุดังตัวอย่าง
+ฺBabel 6 -> Babel 7
+* อัพเกรดผ่าน `npx babel-upgrade`
+* ใช้ babel-preset-env อย่างเดียว ไม่มีรุ่นปีเหมือน v.6
+* พวก stage-0 / 1 / 2 โดนยกเลิกเช่นเดียวกันให้ stage ตามนี้ [Ref.](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0)
+* หากเป็น v.6 จะต้องสร้าง .babelrc แล้วระบุดังตัวอย่าง
 
 ```
 {
   "presets": ["env"]
 }
 ```
+แต่ v7 สามารถเขียนให้อยู่ในรูปแบบของ js ได้ ชื่อว่า `babel.config.js`
+
+## เลือก Framework
+### `No Framework`
+
+เริ่มโปรเจคท์
+> `npm init`
 
 ### `AngularJS`
 
