@@ -88,9 +88,10 @@ module.exports = {
 
 หลังจากลง babel แล้วจะต้อง config babel ให้กับโปรเจคท์ เพื่อให้โปรเจคท์รู้ว่าใช้ babel preset ตัวใด (เช่น env, react) โดยระบุได้ 2 แบบ คือ
 
-ฺBabel 6 -> Babel 7
+**การอัพเดทจาก `Babel 6 -> Babel 7`** (หมายเหตุ Babel 7 ยังไม่ได้ลองแต่จดไว้ก่อน)
 * อัพเกรดผ่าน `npx babel-upgrade`
 * ใช้ babel-preset-env อย่างเดียว ไม่มีรุ่นปีเหมือน v.6
+* ใช้ @babel/preset-flow ในการควบคุม type ด้วย flow/typescript
 * พวก stage-0 / 1 / 2 โดนยกเลิกเช่นเดียวกันให้ stage ตามนี้ [Ref.](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0)
 * หากเป็น v.6 จะต้องสร้าง .babelrc แล้วระบุดังตัวอย่าง
 
@@ -99,21 +100,39 @@ module.exports = {
   "presets": ["env"]
 }
 ```
-แต่ v7 สามารถเขียนให้อยู่ในรูปแบบของ js ได้ ชื่อว่า `babel.config.js`
+แต่ v7 สามารถเขียนให้อยู่ในรูปแบบของ js ได้ ชื่อว่า `babel.config.js` [_ดูคู่มือ_](https://babeljs.io/docs/en/configuration#babelconfigjs)
+```
+module.exports = function () {
+  const presets = [ ... ];
+  const plugins = [ ... ];
+
+  return {
+    presets,
+    plugins
+  };
+}
+```
 
 ## เลือก Framework
 ### `No Framework`
 
-เริ่มโปรเจคท์
+เริ่มโปรเจคท์ จาก folder เปล่า เพื่อสร้าง package.json
 > `npm init`
 
+ลง webpack / babel ตามด้านบน config ค่าต่าง ๆ ให้เรียบร้อย
+การเขียนโค้ดยึดตาม ES6 เป็นหลัก ไม่มี framework เพิ่มเติม
+
 ### `AngularJS`
+TBD
 
 ### `ReactJS`
+TBD
 
 ### `VueJS`
+TBD
 
 ## ถ้าเริ่มทำ Test
+TBD
 
 ### Install Jest
 เหมาะกับ `Unit Test` และ `Intregation Test`
