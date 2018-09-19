@@ -3,19 +3,30 @@
 #### อัพเดทเมื่อ 17/9/2018
 
 ### `รายการ`
-* [ศึกษา ES6](#ศึกษา-ES6)
+* [ศึกษา Javascript](#ศึกษา-javascript)
 * [ติดตั้ง Node และ Yarn](#ติดตั้ง-node-และ-yarn)
 * [ติดตั้ง Webpack](#ติดตั้ง-webpack)
 * [ติดตั้ง Babel](#ติดตั้ง-babel)
+* [Test UI ด้วย NightmareJS]()
 
-### `ศึกษา ES6`
-ต้องทวนบ่อย ๆ เพราะมันจะลืมง่ายมากว่าเรียกว่าอะไร รวมไปถึง ES7/ES8/TC39
+### `ศึกษา Javascript`
+ต้องทวนบ่อย ๆ
+* [Best of Javascript](https://bestofjs.org/) คอยดูว่าอะไรเป็นที่นิยมอยู่
 * [Babel ES6 Learning](https://babeljs.io/docs/en/next/learn)
 * [Javascript Fundamental](https://developer.mozilla.org/bm/docs/Web/JavaScript)
 * [ES6 Features](https://github.com/lukehoban/es6features#readme)
 * [ECMA2015 Specification](http://www.ecma-international.org/ecma-262/6.0/index.html)
 * [Web technologies](https://developer.mozilla.org/en-US/docs/Web)
+* [Javascript Style Guide by Airbnb](https://github.com/airbnb/javascript)
 
+### `อื่น ๆ ที่น่าสนใจ`
+
+* [Apollo Client](https://github.com/apollographql/apollo-client)
+
+### `เครื่องมือทำ Test`
+* [Jest](https://jestjs.io/)
+* [Storybook](https://storybook.js.org/)
+* [NightmareJS](http://www.nightmarejs.org/) A high-level browser automation library.
 
 ### `ติดตั้ง Node และ Yarn`
 ติดตั้ง [node](https://nodejs.org/en/download/) หรือทางเลือกจะลง [yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable) เพิ่มด้วยก็ได้
@@ -142,3 +153,7 @@ TBD
 > `npm install --save-dev jest-puppeteer puppeteer jest`
 
 Document : [Jest with Puppeteer](https://jestjs.io/docs/en/puppeteer)
+
+### `Test UI ด้วย NightmareJS` จะใช้ electron ในการทำงาน
+
+> `npm install --save-dev nightmare chai mocha`
