@@ -57,3 +57,8 @@ tab เพื่อแสดงรายการย่อย
   * Item 2a
   * Item 2b
 ```
+
+## `Markdown Emoji Markup`
+แทรก emoji อ้างอิงจาก [link](https://gist.github.com/rxaviers/7360908)
+
+:tada:	:tada:	:tada:

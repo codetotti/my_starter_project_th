@@ -100,7 +100,7 @@ module.exports = {
 หลังจากลง babel แล้วจะต้อง config babel ให้กับโปรเจคท์ เพื่อให้โปรเจคท์รู้ว่าใช้ babel preset ตัวใด (เช่น env, react) โดยระบุได้ 2 แบบ คือ
 
 **การอัพเดทจาก `Babel 6 -> Babel 7`** (หมายเหตุ Babel 7 ยังไม่ได้ลองแต่จดไว้ก่อน)
-* อัพเกรดผ่าน `npx babel-upgrade`
+* อัพเกรดผ่าน `npx babel-upgrade --write --install`
 * ใช้ babel-preset-env อย่างเดียว ไม่มีรุ่นปีเหมือน v.6
 * ใช้ @babel/preset-flow ในการควบคุม type ด้วย flow/typescript
 * พวก stage-0 / 1 / 2 โดนยกเลิกเช่นเดียวกันให้ stage ตามนี้ [Ref.](https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0#babelpreset-stage-0)
@@ -147,7 +147,25 @@ TBD
 
 ### Install Jest
 เหมาะกับ `Unit Test` และ `Intregation Test`
-> `npm install --save-dev jest`
+> `npm install --save-dev jest babel-jest`
+
+ต้อง config ด้วย .babelrc ว่า
+
+`{ "presets": ["@babel/env"] }`
+
+และ package.json เพิ่ม
+
+```
+  "jest": {
+    "modulePaths": [
+      "./src"
+    ],
+    "transform": {
+      "^.+\\.jsx$": "babel-jest",
+      "^.+\\.js$": "babel-jest"
+    }
+  }
+```
 
 ถ้าใช้ `Puppeteer` ด้วย
 > `npm install --save-dev jest-puppeteer puppeteer jest`
