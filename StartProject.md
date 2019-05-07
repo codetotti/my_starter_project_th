@@ -33,6 +33,8 @@
 
 จัดการโปรเจคท์ด้วย node
 นอกจากนั้นยังมีคำสั่งที่เกี่ยวกับ node เช่น
+> `npm init`
+เป็นการเริ่มต้น project จาก empty project
 
 > `npm install`
 
